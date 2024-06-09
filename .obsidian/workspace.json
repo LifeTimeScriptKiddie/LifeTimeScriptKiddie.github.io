@@ -1,19 +1,21 @@
 {
   "main": {
-    "id": "1139908aa8462ad3",
+    "id": "d7782b90adbd4264",
     "type": "split",
     "children": [
       {
-        "id": "39e27c858969dc9e",
+        "id": "eb57c87e14e07aec",
         "type": "tabs",
         "children": [
           {
-            "id": "b182d808b34a4d76",
+            "id": "e8d78af9fa3c5835",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.6.3"
+                "file": "test.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -23,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "2719d673e000b17d",
+    "id": "6830059782428af6",
     "type": "split",
     "children": [
       {
-        "id": "6f1c7f03ad388277",
+        "id": "22e317dc70dbb1f8",
         "type": "tabs",
         "children": [
           {
-            "id": "e6549270b0eeea26",
+            "id": "ee0266c158fa74b8",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -41,7 +43,7 @@
             }
           },
           {
-            "id": "fe645af1a97e4d93",
+            "id": "2ea662e97b3b42c4",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -56,7 +58,7 @@
             }
           },
           {
-            "id": "d66d8f1b8874e131",
+            "id": "c0b09cd40eae4037",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -70,19 +72,20 @@
     "width": 300
   },
   "right": {
-    "id": "693d9db423a8358a",
+    "id": "1dd1962c2ec29ae9",
     "type": "split",
     "children": [
       {
-        "id": "fcfb5a4291f8c211",
+        "id": "735fb3ef39dbe8ff",
         "type": "tabs",
         "children": [
           {
-            "id": "f5014107e5c9e27b",
+            "id": "52e94b637b45d153",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,18 +97,19 @@
             }
           },
           {
-            "id": "efc7d767b9c71b19",
+            "id": "67be95f19d081a19",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "3f9307b1f6852af1",
+            "id": "336969a4c7844b23",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -116,12 +120,12 @@
             }
           },
           {
-            "id": "bf5e3a4f17729a84",
+            "id": "c8bed9853b380ef4",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Welcome.md"
+                "file": "test.md"
               }
             }
           }
@@ -142,11 +146,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b182d808b34a4d76",
+  "active": "e8d78af9fa3c5835",
   "lastOpenFiles": [
+    "test.md",
     "Week_1_SOP_CORS/test.txt",
-    "Week_1_SOP_CORS/test",
+    "Week_1_SOP_CORS/Week_1_SOP_CORS.md",
     "Week_1_SOP_CORS",
-    "Welcome.md"
+    "Weekly/2024-06-08.md",
+    "Weekly/Untitled.canvas"
   ]
 }
