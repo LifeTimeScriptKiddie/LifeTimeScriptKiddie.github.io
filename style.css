@@ -1,0 +1,18 @@
+/* styles.css */
+#search-bar {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#results pre {
+    background: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+mark {
+    background: yellow;
+}
+
