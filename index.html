@@ -74,8 +74,7 @@
         </div>
         <div id="githubNotesContent" class="content-section">
             <h2>GitHub Notes (scanner.py)</h2>
-            <p>Content related to my GitHub Notes...</p>
-            <a href="https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/scanner.py" target="_blank">Check Out My GitHub Notes (scanner.py)</a>
+            <p id="githubNotesText">Loading...</p>
         </div>
     </div>
 
@@ -84,7 +83,7 @@
             displayContent('githubPageContent');
         });
         document.getElementById('githubNotesLink').addEventListener('click', function() {
-            displayContent('githubNotesContent');
+            fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/scanner.py', 'githubNotesContent', 'githubNotesText');
         });
 
         function displayContent(contentId) {
@@ -93,6 +92,42 @@
                 content.style.display = 'none';
             });
             document.getElementById(contentId).style.display = 'block';
+        }
+
+        function fetchContent(url, contentId, textId) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(textId).textContent = data;
+                    displayContent(contentId);
+                })
+                .catch(error => {
+                    document.getElementById(textId).textContent = 'Error loading content';
+                });
+        }
+
+        function searchScripts() {
+            const scripts = [
+                { name: 'scanner.py', url: 'https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/scanner.py' },
+                { name: 'other_script.py', url: 'https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/other_script.py' }
+            ];
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            const results = document.getElementById('results');
+            results.innerHTML = '';
+
+            const filteredScripts = scripts.filter(script => script.name.toLowerCase().includes(query));
+            if (filteredScripts.length > 0) {
+                filteredScripts.forEach(script => {
+                    const link = document.createElement('a');
+                    link.href = script.url;
+                    link.target = '_blank';
+                    link.textContent = script.name;
+                    results.appendChild(link);
+                    results.appendChild(document.createElement('br'));
+                });
+            } else {
+                results.textContent = 'No scripts found';
+            }
         }
     </script>
 </body>
