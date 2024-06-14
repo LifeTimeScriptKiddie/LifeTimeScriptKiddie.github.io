@@ -5,7 +5,7 @@ document.getElementById('note1Link').addEventListener('click', function() {
     fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/scanner.md', 'note1Content', 'note1Text');
 });
 document.getElementById('note2Link').addEventListener('click', function() {
-    fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md', 'note2Content', 'note2Text');
+    fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/SOP%20and%20CORS.md', 'note2Content', 'note2Text');
 });
 
 function displayContent(contentId) {
