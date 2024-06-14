@@ -55,6 +55,18 @@
         .content-section {
             display: none;
         }
+        pre {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
@@ -74,7 +86,7 @@
         </div>
         <div id="githubNotesContent" class="content-section">
             <h2>GitHub Notes (scanner.py)</h2>
-            <p id="githubNotesText">Loading...</p>
+            <pre id="githubNotesText">Loading...</pre>
         </div>
     </div>
 
@@ -98,7 +110,7 @@
             fetch(url)
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById(textId).textContent = data;
+                    document.getElementById(textId).innerHTML = `<code>${data}</code>`;
                     displayContent(contentId);
                 })
                 .catch(error => {
