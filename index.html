@@ -5,60 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scripts and Notes</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            display: flex;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        #sidebar {
-            width: 250px;
-            background-color: #2c3e50;
-            color: white;
-            height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        #sidebar a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            margin: 10px 0;
-            cursor: pointer;
-        }
-        #sidebar a:hover {
-            background-color: #34495e;
-            padding: 10px;
-        }
-        #content {
-            flex: 1;
-            padding: 20px;
-        }
-        .content-section {
-            display: none;
-        }
-        pre {
-            background-color: #eee;
-            padding: 15px;
-            border-radius: 5px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        code {
-            background-color: #f4f4f4;
-            padding: 2px 4px;
-            border-radius: 3px;
-        }
-    </style>
 </head>
 <body>
     <div id="sidebar">
         <h2>Navigation</h2>
         <a id="githubPageLink">Visit My GitHub Page</a>
         <a id="note1Link">Note 1</a>
-        <a id="note2Link">Note 1</a>
+        <a id="note2Link">Note 2</a>
     </div>
     <div id="content">
         <div id="githubPageContent" class="content-section">
@@ -76,42 +29,7 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('githubPageLink').addEventListener('click', function() {
-            displayContent('githubPageContent');
-        });
-        document.getElementById('note1Link').addEventListener('click', function() {
-            fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/scanner.py', 'note1Content', 'note1Text');
-        });
-        document.getElementById('note2Link').addEventListener('click', function() {
-            fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/scanner.py', 'note2Content', 'note2Text');
-        });
-
-        function displayContent(contentId) {
-            var contents = document.querySelectorAll('.content-section');
-            contents.forEach(function(content) {
-                content.style.display = 'none';
-            });
-            document.getElementById(contentId).style.display = 'block';
-        }
-
-        function fetchContent(url, contentId, textId) {
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(textId).innerHTML = `<code>${data}</code>`;
-                    displayContent(contentId);
-                })
-                .catch(error => {
-                    document.getElementById(textId).textContent = 'Error loading content';
-                });
-        }
-
-        // Load README.md on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md', 'note1Content', 'note1Text');
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
 

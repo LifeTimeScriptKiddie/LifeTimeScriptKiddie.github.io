@@ -1,31 +1,35 @@
-const repoOwner = 'LifeTimeScriptKiddie';
-const repoName = 'LifeTimeScriptKiddie.github.io';
-const branch = 'main';
+document.getElementById('githubPageLink').addEventListener('click', function() {
+    displayContent('githubPageContent');
+});
+document.getElementById('note1Link').addEventListener('click', function() {
+    fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/scanner.py', 'note1Content', 'note1Text');
+});
+document.getElementById('note2Link').addEventListener('click', function() {
+    fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/scanner.py', 'note2Content', 'note2Text');
+});
 
-async function fetchFiles() {
-    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/git/trees/${branch}?recursive=1`);
-    const data = await response.json();
-    return data.tree.filter(file => file.path.endsWith('.js')); // Adjust the file extension as needed
+function displayContent(contentId) {
+    var contents = document.querySelectorAll('.content-section');
+    contents.forEach(function(content) {
+        content.style.display = 'none';
+    });
+    document.getElementById(contentId).style.display = 'block';
 }
 
-async function fetchFileContent(url) {
-    const response = await fetch(url);
-    return response.text();
+function fetchContent(url, contentId, textId) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById(textId).innerHTML = `<code>${data}</code>`;
+            displayContent(contentId);
+        })
+        .catch(error => {
+            document.getElementById(textId).textContent = 'Error loading content';
+        });
 }
 
-async function searchScripts() {
-    const searchTerm = document.getElementById('search-bar').value.toLowerCase();
-    const resultsDiv = document.getElementById('results');
-    resultsDiv.innerHTML = '';
-
-    const files = await fetchFiles();
-    for (const file of files) {
-        const content = await fetchFileContent(file.url);
-        if (content.toLowerCase().includes(searchTerm)) {
-            const highlightedContent = content.replace(new RegExp(searchTerm, 'gi'), match => `<mark>${match}</mark>`);
-            resultsDiv.innerHTML += `<pre>${highlightedContent}</pre>`;
-        }
-    }
-}
-
+// Load README.md on page load
+document.addEventListener('DOMContentLoaded', function() {
+    fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md', 'note1Content', 'note1Text');
+});
 
