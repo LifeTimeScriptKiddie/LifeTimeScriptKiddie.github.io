@@ -1,3 +1,6 @@
+
+Visual representation
+![](../Pasted%20image%2020240614142821.png)
 # What is Same-Origin Policy (SOP) ?
 One of the web browser security mechanism. SOP restricts javascript on site A from accessing site B based on preset conditions. The conditions can be ports, url, domain, or scheme. 
 
@@ -79,8 +82,50 @@ Let's take a look at cors_app.py
 
 cors_app.py --> https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/SOP_CORS/cors_app.py
 
-![[Pasted image 20240614142821.png]]
+Notice `Origin` and `Access-Control*` headers. 
 
+![](../Pasted%20image%2020240614143302.png)
+
+By changing Origin header, 
+
+![](../Pasted%20image%2020240614143425.png)
+
+
+Notice Options header. This is a preflight request to check what options are authorized. 
+Caveat: Once again, this is man made feature. Meaning, it is up to the developer to set it up or not. 
+
+![](../Pasted%20image%2020240614143612.png)
+
+```javascript
+@app.route('/api/data', methods=['GET', 'POST', 'OPTIONS'])                                                                                                  
+def api_data():
+    if request.method == 'OPTIONS':                                           
+        response = make_response('', 204)
+        response.headers['Access-Control-Allow-Origin'] = 'http://127.0.0.1:5000'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+        response.headers['Access-Control-Max-Age'] = '86400'
+        response.headers['Access-Control-Allow-Credentials'] = 'true'
+        return response
+
+    origin = request.headers.get('Origin')
+    if origin == 'http://127.0.0.1:5000':
+        if request.method == 'GET':
+            response = make_response(jsonify(message="This is a GET request from a different origin with custom CORS headers."))
+        elif request.method == 'POST':
+            data = request.json
+            response = make_response(jsonify(message="This is a POST request from a different origin with custom CORS headers.", data=data))
+         
+        response.headers['Access-Control-Allow-Origin'] = origin
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+        response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+        response.headers['Access-Control-Max-Age'] = '86400'
+        response.headers['Access-Control-Allow-Credentials'] = 'true'
+        return response
+    else:
+        return jsonify(message="CORS policy does not allow this origin."), 403 
+
+```
 
 # References
 
