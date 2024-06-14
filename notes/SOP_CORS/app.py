@@ -12,7 +12,8 @@ def home():
     <h1> SOP/CORS Demo </h1>
     <button onclick="fetchData()">Fetch Data (SOP)</button>
     <p id='result'></p>
-    <button onclick="fetchData_cors()">Fetch Data (CORS)</button>
+    <button onclick="fetchData_cors('GET')">Fetch Data (CORS - GET)</button>
+    <button onclick="fetchData_cors('POST')">Fetch Data (CORS - POST)</button>
     <p id='result_cors'></p>
 
     <script>
@@ -27,8 +28,19 @@ def home():
             });
         }
 
-        function fetchData_cors() {
-            fetch('http://127.0.0.1:5001/api/data')
+        function fetchData_cors(method) {
+            const options = {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+
+            if (method === 'POST') {
+                options.body = JSON.stringify({ key: 'value' });  // Add body for POST requests
+            }
+
+            fetch('http://127.0.0.1:5001/api/data', options)
             .then(response => response.json())
             .then(data => {
                 document.getElementById('result_cors').textContent = data.message;
