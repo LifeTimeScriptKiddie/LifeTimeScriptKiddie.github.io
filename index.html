@@ -58,6 +58,7 @@
         <h2>Navigation</h2>
         <a id="githubPageLink">Visit My GitHub Page</a>
         <a id="note1Link">Note 1</a>
+        <a id="note2Link">Note 2</a>
     </div>
     <div id="content">
         <div id="githubPageContent" class="content-section">
@@ -66,11 +67,16 @@
             <a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io" target="_blank">Visit My GitHub Page</a>
         </div>
         <div id="note1Content" class="content-section">
-            <h2>Note 1</h2>
-            <pre id="note1Text">Loading...</pre>
-        </div>
-    </div>
-
+             <h2>Note 1</h2>
+             <pre id="note1Text">Loading...</pre>
+         </div>
+     </div>
+         <div id="note2Content" class="content-section">
+             <h2>Note 2</h2>
+             <pre id="note2Text">Loading...</pre>
+         </div>
+     </div>
+   
     <script>
         document.getElementById('githubPageLink').addEventListener('click', function() {
             displayContent('githubPageContent');
@@ -79,6 +85,8 @@
             fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/scanner.py', 'note1Content', 'note1Text');
         });
 
+        document.getElementById('note2Link').addEventListener('click', function() {
+            fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/scanner.py', 'note2Content', 'note2Text');
         function displayContent(contentId) {
             var contents = document.querySelectorAll('.content-section');
             contents.forEach(function(content) {
