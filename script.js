@@ -20,7 +20,7 @@ function fetchContent(url, contentId, textId) {
     fetch(url)
         .then(response => response.text())
         .then(data => {
-            document.getElementById(textId).innerHTML = `<code>${data}</code>`;
+            document.getElementById(textId).innerHTML = marked(data);
             displayContent(contentId);
         })
         .catch(error => {
