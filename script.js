@@ -27,7 +27,7 @@ function fetchContent(url, contentId, textId) {
             return response.text();
         })
         .then(data => {
-            document.getElementById(textId).innerHTML = marked(data);
+            document.getElementById(textId).innerHTML = marked.parse(data);
             displayContent(contentId);
             console.log(`Fetched and displayed content for: ${textId}`);
         })
