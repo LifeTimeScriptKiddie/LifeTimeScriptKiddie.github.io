@@ -1,5 +1,7 @@
 
 Visual representation
+
+
 ![](../Screenshots/Pasted%20image%2020240614142821.png)
 # What is Same-Origin Policy (SOP) ?
 One of the web browser security mechanism. SOP restricts javascript on site A from accessing site B based on preset conditions. The conditions can be ports, url, domain, or scheme. 
