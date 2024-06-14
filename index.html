@@ -87,6 +87,8 @@
 
         document.getElementById('note2Link').addEventListener('click', function() {
             fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/scanner.py', 'note2Content', 'note2Text');
+		
+        });
         function displayContent(contentId) {
             var contents = document.querySelectorAll('.content-section');
             contents.forEach(function(content) {
