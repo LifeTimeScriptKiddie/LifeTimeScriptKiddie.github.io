@@ -72,8 +72,8 @@
 <body>
     <div id="sidebar">
         <h2>Navigation</h2>
-        <a id="githubPageLink">Visit My GitHub Page</a>
-        <a id="githubNotesLink">SSRF - Port Scanner.py)</a>
+        <a id="githubPageLink">GitHub Page</a>
+        <a id="Note1">SSRF - Port Scanner.py</a>
     </div>
     <div id="content">
         <input type="text" id="search-bar" placeholder="Search scripts...">
@@ -82,11 +82,11 @@
         <div id="githubPageContent" class="content-section">
             <h2>GitHub Page</h2>
             <p>Content related to my GitHub Page...</p>
-            <a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io" target="_blank">Visit My GitHub Page</a>
+            <a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io" target="_blank">GitHub Page</a>
         </div>
-        <div id="githubNotesContent" class="content-section">
+        <div id="Note1" class="content-section">
             <h2>GitHub Notes (scanner.py)</h2>
-            <pre id="githubNotesText">Loading...</pre>
+            <pre id="Note1">Loading...</pre>
         </div>
     </div>
 
@@ -94,7 +94,7 @@
         document.getElementById('githubPageLink').addEventListener('click', function() {
             displayContent('githubPageContent');
         });
-        document.getElementById('githubNotesLink').addEventListener('click', function() {
+        document.getElementById('Note1').addEventListener('click', function() {
             fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/scanner.py', 'githubNotesContent', 'githubNotesText');
         });
 
