@@ -26,21 +26,26 @@ Out of all those two headers are significantly important
 
 `Access-Control-Allow-Credentials : True`  --> Indicates the browser will send user's  cookies. Meaning attackers can ride the victim's session. 
 
+---
+
 
 Example using a premature Flask python scripts. 
+
 app.py --> https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/SOP_CORS/app.py
-cors_app.py --> https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/SOP_CORS/cors_app.py
+![](../Pasted%20image%2020240614141150.png)
+![](../Pasted%20image%2020240614141159.png)
 
-![[Pasted image 20240614141150.png]]
 
-![[Pasted image 20240614141159.png]]
+
 
 
 
 
 Snapshot from 127.0.0.1:5000. Sending a Get request to http://127.0.0.1:5000/data. 
 Observe there is no 'Origin' header in the request. This is a request that is reaching out to resource that is on the same network. 
-![[Pasted image 20240614141500.png]]
+![](../Pasted%20image%2020240614141500.png)
+
+
 
 Script is as below. The get request is reaching out to http://127.0.0.1:5000/data. 
 If this website is properly configured ( meaning if I knew how to build the website properly with some extra time), browsers could reach out to sub directories under /data. 
@@ -57,9 +62,24 @@ If this website is properly configured ( meaning if I knew how to build the webs
             });
         }
 
+...
+
+
+@app.route('/data')
+def data():
+    return jsonify(message="This is data from the same origin.")
+
+
 ```
 
 
+
+___
+Let's take a look at cors_app.py
+
+cors_app.py --> https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/SOP_CORS/cors_app.py
+
+![[Pasted image 20240614142821.png]]
 
 
 # References
