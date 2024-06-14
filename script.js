@@ -14,16 +14,25 @@ function displayContent(contentId) {
         content.style.display = 'none';
     });
     document.getElementById(contentId).style.display = 'block';
+    console.log(`Displayed content: ${contentId}`);
 }
 
 function fetchContent(url, contentId, textId) {
+    console.log(`Fetching content from: ${url}`);
     fetch(url)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
         .then(data => {
             document.getElementById(textId).innerHTML = marked(data);
             displayContent(contentId);
+            console.log(`Fetched and displayed content for: ${textId}`);
         })
         .catch(error => {
+            console.error('Error loading content:', error);
             document.getElementById(textId).textContent = 'Error loading content';
         });
 }
