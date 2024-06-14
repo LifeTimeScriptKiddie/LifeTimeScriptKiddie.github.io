@@ -26,6 +26,7 @@
             text-decoration: none;
             display: block;
             margin: 10px 0;
+            cursor: pointer;
         }
         #sidebar a:hover {
             background-color: #34495e;
@@ -51,21 +52,49 @@
         button:hover {
             background-color: #34495e;
         }
+        .content-section {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div id="sidebar">
         <h2>Navigation</h2>
-        <a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io" target="_blank">Visit My GitHub Page</a>
-        <a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/scanner.py" target="_blank">Check Out My GitHub Notes (scanner.py)</a>
+        <a id="githubPageLink">Visit My GitHub Page</a>
+        <a id="githubNotesLink">Check Out My GitHub Notes (scanner.py)</a>
     </div>
     <div id="content">
         <input type="text" id="search-bar" placeholder="Search scripts...">
         <button onclick="searchScripts()">Search</button>
         <div id="results"></div>
+        <div id="githubPageContent" class="content-section">
+            <h2>GitHub Page</h2>
+            <p>Content related to my GitHub Page...</p>
+            <a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io" target="_blank">Visit My GitHub Page</a>
+        </div>
+        <div id="githubNotesContent" class="content-section">
+            <h2>GitHub Notes (scanner.py)</h2>
+            <p>Content related to my GitHub Notes...</p>
+            <a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/scanner.py" target="_blank">Check Out My GitHub Notes (scanner.py)</a>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('githubPageLink').addEventListener('click', function() {
+            displayContent('githubPageContent');
+        });
+        document.getElementById('githubNotesLink').addEventListener('click', function() {
+            displayContent('githubNotesContent');
+        });
+
+        function displayContent(contentId) {
+            var contents = document.querySelectorAll('.content-section');
+            contents.forEach(function(content) {
+                content.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+        }
+    </script>
 </body>
 </html>
 
