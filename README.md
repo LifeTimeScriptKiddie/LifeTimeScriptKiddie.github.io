@@ -1,5 +1,5 @@
 Recording Cyber Journey
 
 
-1. [SOP and CORS](notes/SOP%20and%20CORS.md)
-2. [Reference - Prototype pollution](Week%202%20Prototype/Reference%20-%20Prototype%20pollution.md)
+1. [SOP and CORS](notes/Week%201%20SOP_CORS/Images/SOP%20and%20CORS.md)
+2. [Prototype pollution](notes/Week%202%20Prototype/Prototype%20pollution.md)
