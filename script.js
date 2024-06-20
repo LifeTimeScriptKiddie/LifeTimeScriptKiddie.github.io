@@ -12,14 +12,24 @@ function fetchContent(url, textId) {
             return response.text();
         })
         .then(data => {
-            document.getElementById(textId).innerHTML = marked.parse(data);
-            highlightCodeBlocks();  // Function to highlight code blocks
+            const parsedContent = marked.parse(data);
+            const adjustedContent = adjustImagePaths(parsedContent);
+            document.getElementById(textId).innerHTML = adjustedContent;
+            highlightCodeBlocks();
             console.log(`Fetched and displayed content for: ${textId}`);
         })
         .catch(error => {
             console.error('Error loading content:', error);
             document.getElementById(textId).textContent = 'Error loading content';
         });
+}
+
+function adjustImagePaths(content) {
+    const baseUrl = 'https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/';
+    return content.replace(/!\[(.*?)\]\((.*?)\)/g, (match, p1, p2) => {
+        const adjustedPath = baseUrl + p2;
+        return `![${p1}](${adjustedPath})`;
+    });
 }
 
 function highlightCodeBlocks() {
