@@ -43,6 +43,6 @@ function fetchContent(url, contentId, textId) {
 
 // Load README.md on page load
 document.addEventListener('DOMContentLoaded', function() {
-    fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md', 'note1Content', 'note1Text');
+    fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md', 'githubPageContent', 'note1Text');
 });
 
