@@ -1,4 +1,4 @@
-To understand prototype pollution, the basic understanding of JavaScript is required. Thanks to PortSwigger. 
+To understand prototype pollution, a basic understanding of JavaScript is required. Thanks to PortSwigger. 
 
 
 Key concepts:
@@ -14,7 +14,7 @@ Key concepts:
 ## 1. What is an Object?
 A JavaScript object is essentially just a collection of key:value pairs known as "Properties"
 
-As the below image indicates, `person` is an object. Under the `person` object, five properties exists. 
+As the image below indicates, `person` is an object.  The `person` object has five properties. 
 
 Almost every thing in JS is an object
 
@@ -24,7 +24,7 @@ Almost every thing in JS is an object
 ## 2. What is a Method in an Object?
 
 
-`greet` is a method, which is a way to call a function within an object. 
+ `greet` is a method, which is a way to call a function within an object. 
 
 
 ![](Images/Pasted%20image%2020240618103831.png)
@@ -40,7 +40,7 @@ Object literal is a way to define an object. From the above picture, `{}`, `key:
 GPT says:
 Every JavaScript function has a prototype property that is used to attach properties and methods that should be inherited by instances created by that function when it is used as a constructor.
 
-The __proto__ property in JavaScript is a reference to the prototype of an object. 
+The `__proto__` property in JavaScript is a reference to the prototype of an object. 
 
 When a function is defined, it automatically gets a `prototype` property.
 
@@ -50,7 +50,7 @@ When a function is defined, it automatically gets a `prototype` property.
 
 
 ### 4.2  Another example from GPT.
-**Functions**: When a function is defined, it automatically gets a prototype property. This is an object that will be assigned as the prototype for all instances created by this function.
+**Functions**: When a function is defined, it automatically gets a `prototype` property. This is an object that will be assigned as the prototype for all instances created by this function.
 
 ``` javascript
 function MyConstructor() {}
@@ -58,7 +58,7 @@ console.log(typeof MyConstructor.prototype); // "object"
 
 ```
 
-**Constructor** Functions: When you use a constructor function with the new keyword, the created object’s __proto__ is set to the constructor function’s prototype.
+**Constructor Functions**: When you use a constructor function with the `new` keyword, the created object’s `__proto__` is set to the constructor function’s `prototype`.
 
 
 
@@ -68,7 +68,7 @@ console.log(typeof MyConstructor.prototype); // "object"
 
 
 
-A constructor function is a regular function that is used with the `new` keyword to create objects. `When called with new, the function sets up a new object and binds this to the new object, allowing it to initialize the object's properties and methods.`
+A constructor function is a regular function that is used with the `new` keyword to create objects. When called with `new`, the function sets up a new object and binds `this` to the new object, allowing it to initialize the object's properties and methods.
 
 ![](Images/Pasted%20image%2020240618112430.png)
 
@@ -97,7 +97,7 @@ username.__proto__.__proto__.__proto__   // null
 
 ### 4.4 Prototype inheritance  - new operator
 
-When an object is generated using `new` operator, (object s below), and a constructor function, (function X below), `__proto__` value of function x will be copied over to the object s. 
+When an object is generated using `new` operator, (object `s` below), and a constructor function, (function `X `below), `__proto__` value of function `x` will be copied over to the object `s`. 
 
 ![](Images/Pasted%20image%2020240620105943.png)
 Let's use the below script.
