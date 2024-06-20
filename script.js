@@ -11,7 +11,6 @@ document.getElementById('note3Link').addEventListener('click', function() {
     fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/Prototype/Reference%20-%20Prototype%20pollution.md', 'note3Content', 'note3Text');
 });
 
-
 function displayContent(contentId) {
     var contents = document.querySelectorAll('.content-section');
     contents.forEach(function(content) {
@@ -41,7 +40,7 @@ function fetchContent(url, contentId, textId) {
         });
 }
 
-// Load README.md on page load
+// Load GitHub Page content on page load
 document.addEventListener('DOMContentLoaded', function() {
     fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md', 'githubPageContent', 'note1Text');
 });

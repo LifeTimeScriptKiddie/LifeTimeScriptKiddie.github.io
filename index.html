@@ -8,32 +8,40 @@
     <script src="https://cdn.jsdelivr.net/npm/marked@4.0.12/marked.min.js"></script>
 </head>
 <body>
-    <div id="sidebar">
+    <header>
+        <h1>Scripts and Notes</h1>
+    </header>
+    <nav id="sidebar">
         <h2>Navigation</h2>
-        <a id="githubPageLink">Visit My GitHub Page</a>
-        <a id="note1Link">Note 1 - Scan Port via SSRF</a>
-        <a id="note2Link">Note 2 - SOP and CORS</a>
-        <a id="note3Link">Note 3 - Prototype Pollution- JS</a>
-    </div>
+        <ul>
+            <li><a id="githubPageLink">Visit My GitHub Page</a></li>
+            <li><a id="note1Link">Note 1 - Scan Port via SSRF</a></li>
+            <li><a id="note2Link">Note 2 - SOP and CORS</a></li>
+            <li><a id="note3Link">Note 3 - Prototype Pollution - JS</a></li>
+        </ul>
+    </nav>
     <div id="content">
-        <div id="githubPageContent" class="content-section">
+        <section id="githubPageContent" class="content-section">
             <h2>GitHub Page</h2>
             <p>Content related to my GitHub Page...</p>
             <a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io" target="_blank">Visit My GitHub Page</a>
-        </div>
-        <div id="note1Content" class="content-section">
-            <h2>Note 1</h2>
+        </section>
+        <section id="note1Content" class="content-section">
+            <h2>Note 1 - Scan Port via SSRF</h2>
             <div id="note1Text">Loading...</div>
-        </div>
-       <div id="note2Content" class="content-section">
-            <h2>Same-Origin Policy/Cross-Origin Resource Sharing</h2>
+        </section>
+        <section id="note2Content" class="content-section">
+            <h2>Note 2 - SOP and CORS</h2>
             <div id="note2Text">Loading...</div>
-        </div>
-       <div id="note3Content" class="content-section">
-            <h2>Prototype Pollution</h2>
+        </section>
+        <section id="note3Content" class="content-section">
+            <h2>Note 3 - Prototype Pollution - JS</h2>
             <div id="note3Text">Loading...</div>
-        </div>
+        </section>
     </div>
+    <footer>
+        <p>&copy; 2024 A to Z Cyber</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

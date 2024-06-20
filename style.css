@@ -3,6 +3,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
     color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -13,22 +15,45 @@ header {
     color: white;
 }
 
-nav {
-    margin: 20px;
+nav#sidebar {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+nav#sidebar h2 {
     text-align: center;
 }
 
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #4CAF50;
+nav#sidebar ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-article {
-    max-width: 800px;
-    margin: 20px auto;
+nav#sidebar ul li a {
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+nav#sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+#content {
+    margin-left: 270px;
     padding: 20px;
+}
+
+.content-section {
     background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
