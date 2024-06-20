@@ -7,6 +7,10 @@ document.getElementById('note1Link').addEventListener('click', function() {
 document.getElementById('note2Link').addEventListener('click', function() {
     fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/SOP%20and%20CORS.md', 'note2Content', 'note2Text');
 });
+document.getElementById('note3Link').addEventListener('click', function() {
+    fetchContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/Prototype/Reference%20-%20Prototype%20pollution.md', 'note3Content', 'note3Text');
+});
+
 
 function displayContent(contentId) {
     var contents = document.querySelectorAll('.content-section');
