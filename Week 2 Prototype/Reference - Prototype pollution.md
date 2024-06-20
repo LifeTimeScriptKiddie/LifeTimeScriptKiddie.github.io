@@ -27,7 +27,7 @@ Almost every thing in JS is an object
 `greet` is a method, which is a way to call a function within an object. 
 
 
-![](./Images/Pasted%20image%2020240618103831.png)
+![](Images/Pasted%20image%2020240618103831.png)
 
 ---
 ## 3. What is Object literal
@@ -45,8 +45,8 @@ The __proto__ property in JavaScript is a reference to the prototype of an objec
 When a function is defined, it automatically gets a `prototype` property.
 
 ###  4.1 A great example from PortSwigger.
-![](./Images/Pasted%20image%2020240618113213.png)
-![](./Images/Pasted%20image%2020240618110000.png)
+![](Images/Pasted%20image%2020240618113213.png)
+![](Images/Pasted%20image%2020240618110000.png)
 
 
 ### 4.2  Another example from GPT.
@@ -70,7 +70,7 @@ console.log(typeof MyConstructor.prototype); // "object"
 
 A constructor function is a regular function that is used with the `new` keyword to create objects. `When called with new, the function sets up a new object and binds this to the new object, allowing it to initialize the object's properties and methods.`
 
-![](./Images/Pasted%20image%2020240618112430.png)
+![](Images/Pasted%20image%2020240618112430.png)
 
 
 **Built-in Prototypes**: Built-in objects like Array, String, etc., have their own prototype objects that define methods available to their instances.
@@ -99,7 +99,7 @@ username.__proto__.__proto__.__proto__   // null
 
 When an object is generated using `new` operator, (object s below), and a constructor function, (function X below), `__proto__` value of function x will be copied over to the object s. 
 
-![](./Images/Pasted%20image%2020240620105943.png)
+![](Images/Pasted%20image%2020240620105943.png)
 Let's use the below script.
 
 I created a function name tester. This function sets two properties, name and age. 
@@ -136,12 +136,12 @@ console.log(tester.prototype.isOld); // Outputs: [Function: isOld]
 ```
 
 Here other functions are observed under `__proto__`
-![](./Images/Pasted%20image%2020240620113738.png)
+![](Images/Pasted%20image%2020240620113738.png)
 
 ---
 This is a screenshot from the vscode here. 
 
-![](./Images/Pasted%20image%2020240620111746.png)
+![](Images/Pasted%20image%2020240620111746.png)
 
 
 
@@ -259,7 +259,7 @@ merge(a, b)
 Prototype pollution is a JavaScript vulnerability that enables an attacker to add arbitrary properties to global object prototypes, which may then be inherited by user-defined objects.
 
 
-![](./Images/Pasted%20image%2020240618093109.png)
+![](Images/Pasted%20image%2020240618093109.png)
 
 
 Two types exist. 

@@ -2,7 +2,7 @@
 Visual representation
 
 
-![](../Screenshots/Pasted%20image%2020240614142821.png)
+![](Week%201SOP_CORS/Screenshots/Pasted%20image%2020240614142821.png)
 # What is Same-Origin Policy (SOP) ?
 One of the web browser security mechanism. SOP restricts javascript on site A from accessing site B based on preset conditions. The conditions can be ports, url, domain, or scheme. 
 
@@ -37,8 +37,8 @@ Out of all those two headers are significantly important
 Example using a premature Flask python scripts. 
 
 app.py --> https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/SOP_CORS/app.py
-![](../Screenshots/Pasted%20image%2020240614141150.png)
-![](../Screenshots/Pasted%20image%2020240614141159.png)
+![](Week%201SOP_CORS/Screenshots/Pasted%20image%2020240614141150.png)
+![](Week%201SOP_CORS/Screenshots/Pasted%20image%2020240614141159.png)
 
 
 
@@ -48,7 +48,7 @@ app.py --> https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScript
 
 Snapshot from 127.0.0.1:5000. Sending a Get request to http://127.0.0.1:5000/data. 
 Observe there is no 'Origin' header in the request. This is a request that is reaching out to resource that is on the same network. 
-![](../Screenshots/Pasted%20image%2020240614141500.png)
+![](Week%201SOP_CORS/Screenshots/Pasted%20image%2020240614141500.png)
 
 
 
@@ -86,17 +86,17 @@ cors_app.py --> https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeS
 
 Notice `Origin` and `Access-Control*` headers. 
 
-![](../Screenshots/Pasted%20image%2020240614143302.png)
+![](Week%201SOP_CORS/Screenshots/Pasted%20image%2020240614143302.png)
 
 By changing Origin header, 
 
-![](../Screenshots/Pasted%20image%2020240614143425.png)
+![](Week%201SOP_CORS/Screenshots/Pasted%20image%2020240614143425.png)
 
 
 Notice Options header. This is a preflight request to check what options are authorized. 
 Caveat: Once again, this is man made feature. Meaning, it is up to the developer to set it up or not. 
 
-![](../Screenshots/Pasted%20image%2020240614143612.png)
+![](Week%201SOP_CORS/Screenshots/Pasted%20image%2020240614143612.png)
 
 ```javascript
 @app.route('/api/data', methods=['GET', 'POST', 'OPTIONS'])                                                                                                  
