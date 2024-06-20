@@ -58,6 +58,11 @@ nav#sidebar ul li a:hover {
     color: white; /* Ensure text is white */
 }
 
+img {
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto;
+}
+
 footer {
     text-align: center;
     padding: 10px;
