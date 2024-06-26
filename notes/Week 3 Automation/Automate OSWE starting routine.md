@@ -11,7 +11,7 @@ Process: I built the initial script with chatGPT, which finished 95% of work, an
 
 
 ```python
-// Here I imported other libraries. This was my first time using getpass, tempfile, and atexit. 
+# Here I imported other libraries. This was my first time using getpass, tempfile, and atexit. 
 
 import subprocess
 import getpass
@@ -21,8 +21,8 @@ import tempfile
 import os
 import atexit
 
-//Here I defined some functions. 
-//run_in_tmux_pane is to run applications. 
+# Here I defined some functions. 
+# run_in_tmux_pane is to run applications. 
 
 # Function to run a command in a tmux pane
 def run_in_tmux_pane(session_name, pane, command):
@@ -30,7 +30,7 @@ def run_in_tmux_pane(session_name, pane, command):
     return process
 
 
-// tmux_killer is totally kill tmux session.
+# tmux_killer is totally kill tmux session.
 
 def tmux_killer():
     process = subprocess.Popen(['tmux', 'kill-server'])
@@ -38,12 +38,13 @@ def tmux_killer():
 
 # Function to execute Git commands
 
-// This is where i upload my notes to github. The github token is loaded in env. 
+# This is where i upload my notes to github. The github token is loaded in env. Not sure if this is the most secure way. However, when I clone the repository to a different location, I didn't see the token value. So I will assume this is safe somewhat. If there is a better option, please let me know. 
 def run_git_commands():
     command = "cd ~/Documents/Notes && git add . && git commit -m 'Automatic commit' && git push"
     subprocess.run(command, shell=True)
 
 # Function to ask for shutdown confirmation
+# This is to terminate the host. 
 def shut_down():
     response = input("Do you want to shut off the system now? (yes or no): ")
     if response.lower() == 'yes':
@@ -56,6 +57,7 @@ def shut_down():
         shut_down()
 
 # Function to clear history
+# Sometimes I have too much going on terminal. Usually it helps, but I don't want to be custom to having these little helps. 
 def clean_history():
     response = input("Do you want to clear history (yes or no): ")
     if response.lower() == 'yes':
@@ -77,19 +79,34 @@ def clean_history():
         clean_history()
 
 # Start Obsidian in the first pane
+# Here Obisidan starts in tmux pane. 
 def obsidian_starts():
     obsidian_command = "/opt/Obsidian"
     obsidian_process = run_in_tmux_pane(session_name, 0, obsidian_command)
 
 
+
+# All Functions are defined, and time to build the script. 
 # Start tmux session and split into two horizontal panes
+
+# Here we have one tmux session " OSWE" 
 session_name = "oswe"
 subprocess.run(['tmux', 'new-session', '-d', '-s', session_name])
 subprocess.run(['tmux', 'split-window', '-v', '-t', session_name])
 
+
+# Saving sudo password temporarily. 
 # User type password
 sudo_password = getpass.getpass("Enter your sudo password for OpenVPN: ")
 
+
+# Here Obsidian starts. 
+# Starts Obsidian
+obsidian_starts()
+
+
+
+#This was an interesting way to execute but make sense. 
 # Create a temporary expect script for OpenVPN authentication
 expect_script_content = f"""
 spawn sudo openvpn --config /home/kali/offsec/oswe/universal.ovpn
@@ -98,12 +115,11 @@ send "{sudo_password}\\r"
 interact
 """
 
-# Starts Obsidian
-obsidian_starts()
-
 
 
 # Manage the OpenVPN connection in the second pane using expect
+# So here it says the script manages openvpn connection.  Added delete_on_close=True and change delete to True. Then change the setting to False. I guess this delete parameter immediately deletes file and makes os to unable to execute the next process. https://docs.python.org/3/library/tempfile.html identifies delete_on_close as a parameter, but didn't work in my case. *.name here is where tecmp_exepct_script is located. //
+
 with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.expect') as temp_expect_script:
     temp_expect_script.write(expect_script_content)
     temp_expect_script_path = temp_expect_script.name
@@ -112,13 +128,19 @@ expect_command = f"expect {temp_expect_script_path}"
 run_in_tmux_pane(session_name, 1, expect_command)
 
 # Clean up the temporary expect script
+# Manually deleting the path.//
 time.sleep(5)  # Ensure the script has time to execute before removal
 os.remove(temp_expect_script_path)
 
+
+
 # Attach to the tmux session
+# Attach to the session. This brings the pane on my face//
 subprocess.run(['tmux', 'attach', '-t', session_name])
 
+
 # Register cleanup and shutdown functions at exit
+#For whatever reason, atexit executes from the bottom. Per the document, https://docs.python.org/3/library/atexit.html#module-atexit, it is an expected behavior.
 atexit.register(shut_down)
 atexit.register(clean_history)
 atexit.register(run_git_commands())
