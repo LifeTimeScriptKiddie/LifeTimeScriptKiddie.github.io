@@ -1,4 +1,4 @@
-/* style.css */
+/* Existing styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #000; /* Black background */
@@ -66,5 +66,22 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    nav#sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    #content {
+        margin-left: 0;
+    }
+
+    footer {
+        position: relative;
+    }
 }
 
