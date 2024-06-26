@@ -6,20 +6,21 @@
     <title>Scripts and Notes</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        // Function to fetch and display content dynamically
- 	function loadContent() {
-    	const url = 'https://api.github.com/repos/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/contents/README.md';
+        function loadContent(url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById('mainText').innerHTML = marked(text); // Use marked.js to convert markdown to HTML
+                })
+                .catch(err => console.error('Failed to fetch page:', err));
+        }
 
-    	fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const content = atob(data.content);  // Decode base64 content
-            document.getElementById('mainText').innerHTML = '<pre>' + content + '</pre>';
-        })
-        .catch(err => console.error('Failed to fetch README:', err));
-}
-
+        // Load the README content by default
+        window.onload = function() {
+            loadContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md');
+        };
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Include marked.js -->
 </head>
 <body>
     <header>
@@ -28,27 +29,21 @@
     <nav id="sidebar">
         <h2>Navigation</h2>
         <ul>
-             <li><a href="#" onclick="loadContent(); return false;">Home (README.md)</a></li>
-            <li><a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/notes/Week%201%20SOP_CORS/Images/SOP%20and%20CORS.md" target="_blank">Note 1 - SOP and CORS</a></li>
-            <li><a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/notes/Week%202%20Prototype/Prototype%20pollution.md" target="_blank">Note 2 - Prototype Pollution</a></li>
-            <li><a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/notes/Week%203%20Automation/Automate%20OSWE%20starting%20routine.md" target="_blank">Note 2 - Prototype Pollution</a></li>
+            <li><a href="#" onclick="loadContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md'); return false;">Home (README.md)</a></li>
+            <li><a href="https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/Week%201%20SOP_CORS/Images/SOP%20and%20CORS.md" target="_blank">Note 1 - SOP and CORS</a></li>
+            <li><a href="https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/Week%202%20Prototype/Prototype%20pollution.md" target="_blank">Note 2 - Prototype Pollution</a></li>
+            <li><a href="https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/Week%203%20Automation/Automate%20OSWE%20starting%20routine.md" target="_blank">Note 3 - Automate OSWE Starting Routine</a></li>
+            <li><a href="https://www.linkedin.com/in/your-linkedin-id" target="_blank">LinkedIn</a></li>
         </ul>
-
-
-
     </nav>
- 
-
 
     <div id="content">
         <section id="mainContent" class="content-section">
-            <div id="mainText">Hello World. I would love to learn from smart people. Please connect with via LinkedIn </div>
+            <div id="mainText">Welcome to my Scripts and Notes page. Click the links on the left to view the notes.</div>
         </section>
     </div>
     <footer>
         <p>&copy; 2024 A to Z Cyber</p>
-        <li><a href="www.linkedin.com/in/lifetimescriptkiddie" target="_blank">LinkedIn</a></li>
-
     </footer>
 </body>
 </html>
