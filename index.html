@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scripts and Notes</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         function loadContent(url) {
             if (url.includes('SOP%20and%20CORS.md')) {
@@ -12,28 +13,23 @@
             } else {
                 fetch(url)
                     .then(response => response.text())
-                    .then(html => {
-                        // Create a temporary container to hold the HTML
-                        const tempDiv = document.createElement('div');
-                        tempDiv.innerHTML = html;
+                    .then(markdown => {
+                        document.getElementById('mainText').innerHTML = marked(markdown);
 
                         // Correct the paths of images and links
                         const base = url.substring(0, url.lastIndexOf('/'));
-                        const images = tempDiv.querySelectorAll('img');
+                        const images = document.querySelectorAll('#mainText img');
                         images.forEach(img => {
                             if (img.src.startsWith('/')) {
                                 img.src = base + img.src;
                             }
                         });
-                        const links = tempDiv.querySelectorAll('a');
+                        const links = document.querySelectorAll('#mainText a');
                         links.forEach(link => {
                             if (link.href.startsWith('/')) {
                                 link.href = base + link.href;
                             }
                         });
-
-                        // Insert the processed HTML into the main content area
-                        document.getElementById('mainText').innerHTML = tempDiv.innerHTML;
                     })
                     .catch(err => console.error('Failed to fetch page:', err));
             }
