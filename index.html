@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scripts and Notes</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to fetch and display content dynamically
+        function loadContent(url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById('mainText').innerHTML = '<pre>' + text + '</pre>';
+                })
+                .catch(err => console.error('Failed to fetch page: ', err));
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -27,7 +38,7 @@
 
     <div id="content">
         <section id="mainContent" class="content-section">
-            <div id="mainText">Hello World. </div>
+            <div id="mainText">Hello World. I would love to learn from smart people. Please connect with via LinkedIn </div>
         </section>
     </div>
     <footer>
