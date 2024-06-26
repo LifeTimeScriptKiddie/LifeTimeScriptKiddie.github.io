@@ -6,21 +6,39 @@
     <title>Scripts and Notes</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        function loadContent(url) {
+        function loadGitHubPage(url) {
             fetch(url)
                 .then(response => response.text())
-                .then(text => {
-                    document.getElementById('mainText').innerHTML = marked(text); // Use marked.js to convert markdown to HTML
+                .then(html => {
+                    // Create a temporary container to hold the HTML
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = html;
+
+                    // Correct the paths of images and links
+                    const base = url.substring(0, url.lastIndexOf('/'));
+                    const images = tempDiv.querySelectorAll('img');
+                    images.forEach(img => {
+                        if (img.src.startsWith('/')) {
+                            img.src = base + img.src;
+                        }
+                    });
+                    const links = tempDiv.querySelectorAll('a');
+                    links.forEach(link => {
+                        if (link.href.startsWith('/')) {
+                            link.href = base + link.href;
+                        }
+                    });
+
+                    // Insert the processed HTML into the main content area
+                    document.getElementById('mainText').innerHTML = tempDiv.innerHTML;
                 })
                 .catch(err => console.error('Failed to fetch page:', err));
         }
 
-        // Load the README content by default
         window.onload = function() {
-            loadContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md');
+            loadGitHubPage('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md');
         };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> <!-- Include marked.js -->
 </head>
 <body>
     <header>
@@ -33,17 +51,18 @@
             <li><a href="https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/Week%201%20SOP_CORS/Images/SOP%20and%20CORS.md" target="_blank">Note 1 - SOP and CORS</a></li>
             <li><a href="https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/Week%202%20Prototype/Prototype%20pollution.md" target="_blank">Note 2 - Prototype Pollution</a></li>
             <li><a href="https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/notes/Week%203%20Automation/Automate%20OSWE%20starting%20routine.md" target="_blank">Note 3 - Automate OSWE Starting Routine</a></li>
-            <li><a href="https://www.linkedin.com/in/your-linkedin-id" target="_blank">LinkedIn</a></li>
+            
         </ul>
     </nav>
 
     <div id="content">
         <section id="mainContent" class="content-section">
-            <div id="mainText">Welcome to my Scripts and Notes page. Click the links on the left to view the notes.</div>
+            <div id="mainText">Hello world. Looking forward to connecting and learning from you. Please feel free to connect with me. </div>
         </section>
     </div>
     <footer>
         <p>&copy; 2024 A to Z Cyber</p>
+        <li><a href="https://www.linkedin.com/in/your-linkedin-id" target="_blank">LinkedIn</a></li>
     </footer>
 </body>
 </html>
