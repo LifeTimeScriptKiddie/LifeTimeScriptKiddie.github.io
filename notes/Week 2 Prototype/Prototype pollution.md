@@ -8,7 +8,7 @@ Key concepts:
 4. What is Prototype?
 5. What is Prototype Pollution? 
 6. How to select a target?
-
+...
 ----
 
 ## 1. What is an Object?
