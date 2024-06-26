@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="style.css">
     <script>
         // Function to fetch and display content dynamically
-        function loadContent(url) {
-            fetch(url)
-                .then(response => response.text())
-                .then(text => {
-                    document.getElementById('mainText').innerHTML = '<pre>' + text + '</pre>';
-                })
-                .catch(err => console.error('Failed to fetch page: ', err));
-        }
+ 	function loadContent() {
+    	const url = 'https://api.github.com/repos/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/contents/README.md';
+
+    	fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const content = atob(data.content);  // Decode base64 content
+            document.getElementById('mainText').innerHTML = '<pre>' + content + '</pre>';
+        })
+        .catch(err => console.error('Failed to fetch README:', err));
+}
+
     </script>
 </head>
 <body>
@@ -24,7 +28,7 @@
     <nav id="sidebar">
         <h2>Navigation</h2>
         <ul>
-             <li><a href="#" onclick="loadContent('https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/README.md')">Home (README.md)</a></li>
+             <li><a href="#" onclick="loadContent(); return false;">Home (README.md)</a></li>
             <li><a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/notes/Week%201%20SOP_CORS/Images/SOP%20and%20CORS.md" target="_blank">Note 1 - SOP and CORS</a></li>
             <li><a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/notes/Week%202%20Prototype/Prototype%20pollution.md" target="_blank">Note 2 - Prototype Pollution</a></li>
             <li><a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/notes/Week%203%20Automation/Automate%20OSWE%20starting%20routine.md" target="_blank">Note 2 - Prototype Pollution</a></li>
