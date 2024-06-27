@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts and Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        function loadContent(url) {
+            if (url.includes('SOP%20and%20CORS.md')) {
+                document.getElementById('mainText').innerHTML = '<img src="sop_cors.png" alt="SOP and CORS" style="max-width: 100%;">';
+            } else {
+                fetch(url)
+                    .then(response => response.text())
+                    .then(markdown => {
+                        document.getElementById('mainText').innerHTML = marked(markdown);
+
+                        // Correct the paths of images and links
+                        const base = url.substring(0, url.lastIndexOf('/'));
+                        const images = document.querySelectorAll('#mainText img');
+                        images.forEach(img => {
+                            if (img.src.startsWith('/')) {
+                                img.src = base + img.src;
+                            }
+                        });
+                        const links = document.querySelectorAll('#mainText a');
+                        links.forEach(link => {
+                            if (link.href.startsWith('/')) {
+                                link.href = base + link.href;
+                            }
+                        });
+                    })
+                    .catch(err => console.error('Failed to fetch page:', err));
+            }
+        }
+
+        window.onload = function() {
+            loadContent('https://raw.githubusercontent.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/main/README.md');
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Notes</h1>
+    </header>
+    <nav id="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/README.md" onclick="loadContent('https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/README.md'); return false;">Home (README.md)</a></li>
+            <li><a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/notes/Week%201%20SOP_CORS/Images/SOP%20and%20CORS.md" target="_blank" );">Note 1 - SOP and CORS</a></li>
+            <li><a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/notes/Week%202%20Prototype/Prototype%20pollution.md" target="_blank">Note 2 - Prototype Pollution</a></li>
+            <li><a href="https://github.com/LifeTimeScriptKiddie/LifeTimeScriptKiddie.github.io/blob/main/notes/Week%203%20Automation/Automate%20OSWE%20starting%20routine.md" target="_blank">Note 3 - Automate OSWE Starting Routine</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <section id="mainContent" class="content-section">
+            <div id="mainText" class="markdown-body">Hello world. Looking forward to connecting and learning from you. Please feel free to connect with me. </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 A to Z Cyber</p>
+        <li><a href="https://www.linkedin.com/in/lifetimescriptkiddie" target="_blank">LinkedIn</a></li>
+		     
+    </footer>
+</body>
+</html>
+
