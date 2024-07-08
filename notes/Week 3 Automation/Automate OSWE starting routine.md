@@ -1,4 +1,4 @@
-. 
+ 
 
 So while I was browsing reddit, x, substack, etc., I saw a memorable line. The lines goes something like..."if you are repeating a process more than 5 minutes, it is absolutely worth to spend the next five days to automate the process". While I don't recall the exact phrase, I agree 100% and decide to develop a python script to automate the process.  Here is a quick flow chart that is somewhat captures the process.
 
@@ -212,5 +212,13 @@ atexit.register(run_git_commands())
 atexit.register(tmux_killer)
 
 
+
+```
+Set up five minute auto update using crontab.
+
+```
+crontab -e
+
+5 0 * * * cd ~/Documents/Note && git add . && git commit -m "crong crong" && git push
 
 ```
